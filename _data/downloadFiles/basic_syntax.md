@@ -1,6 +1,6 @@
 # O básico da sintaxe
 
-## Comentários
+### Comentários
 
 - Comentários de linha única começam com `//`
 - Comentários de várias linhas são delimitados por `/*` no inicio e `*/` no final
@@ -14,7 +14,7 @@
   */
   ```
 
-## Pacotes
+### Pacotes
 
 - Um programa em Go é organizado em pacotes
 - O pacote principal é chamado de `main` e é o ponto de entrada de um programa executável
@@ -23,7 +23,7 @@
     package main
   ```
 
-## Importações
+### Importações
 
 - Para usar funcionalidades de outros pacotes, você precisa importá-los
 
@@ -31,7 +31,7 @@
     import "fmt"
   ```
 
-## Funções
+### Funções
 
 - Funções são blocos de código que podem ser chamados
 - A função `main` é a primeira função executada em um programa Go
@@ -42,7 +42,7 @@
     }
   ```
 
-## Variáveis
+### Variáveis
 
 - Variáveis são declaradas usando a sintaxe `var nome tipo`
 - Go é uma linguagem com tipagem estática, o que significa que você deve especificar o tipo da variável
@@ -54,7 +54,7 @@
     var nome string = "odeassis"
   ```
 
-## Declaração curta de variáveis
+### Declaração curta de variáveis
 
 - Você pode usar `:=` para declarar e atribuir valores a variáveis de forma mais consisa
 
@@ -63,7 +63,7 @@
     age := "24"
   ```
 
-## Estrutura de controle
+### Estrutura de controle
 
 - Go oferece estruturas de controle padrão, como `if`, `for` e `switch`
 
@@ -89,7 +89,7 @@
     }
   ```
 
-## Arrays e Slices
+### Arrays e Slices
 
 - Arrays têm um tamanho fixo, enquanto slices são flexíveis
 - Para criar um slice, você pode usar a função `make`
@@ -97,20 +97,20 @@
   ```go
     var array [5]int
     slice := []int{1,2,3,4,5}
-    
+
     // Criar um slice de inteiros com tamanho inicial de 3 e capacidade de 5
     mySlice := make([]int,3,5)
-    
+
     mySlice[0] = 1
     mySlice[1] = 2
     mySlice[2] = 0
-    
+
     fmt.Println("Slice: ", mySlice)
     fmt.Println("Tamanho:", len(mySlice))
     fmt.Println("Capacidade:", cap(mySlice))
   ```
 
-## Estrutura de dados
+### Estrutura de dados
 
 - Go suporta structs para definir tipos de dados personalizados
 
@@ -121,7 +121,7 @@
     }
   ```
 
-## Funções personalizadas
+### Funções personalizadas
 
 - Você pode criar suas próprias funções personalizadas
 
