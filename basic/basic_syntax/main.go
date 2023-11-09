@@ -23,8 +23,7 @@ func main() {
   fmt.Println(name)
   
   firstName := "francisco"
-  fmt.Println(firstName)  
-  
+  fmt.Println(firstName)
 
   age := 10
 
@@ -58,4 +57,5 @@ func main() {
   fmt.Println("Slice 2: ", mySlice2)
   fmt.Println("Tamanho Slice 2: ", len(mySlice2))
   fmt.Println("Capacidade Slice 2: ", cap(mySlice2))
+
 }
