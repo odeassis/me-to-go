@@ -1,6 +1,6 @@
 # Tipos compostos
 
-Arrays e structs são exemplos de tipos compostos; seus valores são concatenados de outros valores em memória. Arrays são homogêneos, ou seja, todos os seus elementos são do mesmo tipo. Structs são heterogêneos, ou seja, seus elementos podem ser de tipos diferentes. Slices e Maps são estruturas de dados dinâmicas isso significa que seus tamanhos podem ser alterados durante a execução do programa.
+`Arrays` e `Structs` são exemplos de tipos compostos; seus valores são concatenados de outros valores em memória. Arrays são homogêneos, ou seja, todos os seus elementos são do mesmo tipo. Structs são heterogêneos, ou seja, seus elementos podem ser de tipos diferentes. Slices e Maps são estruturas de dados dinâmicas isso significa que seus tamanhos podem ser alterados durante a execução do programa.
 
 ## Arrays
 
@@ -224,3 +224,45 @@ fmt.Println(len(x), cap(x)) // 5 10
 #### append
 
 A função `append` adiciona um ou mais elementos ao final de um slice e retorna o slice resultante. Se o slice tiver capacidade suficiente, os elementos serão adicionados ao slice existente. Se o slice não tiver capacidade suficiente, um novo array será alocado e os elementos serão copiados para o novo array antes de adicionar os novos elementos. A função `append` retorna o slice resultante, que pode ser diferente do slice original. Se o slice original tiver capacidade suficiente, o slice resultante apontará para o mesmo array subjacente que o slice original. Se o slice original não tiver capacidade suficiente, o slice resultante apontará para um novo array alocado.
+
+A função `append` é crucial para entender o funcionamento dos slices em Go.
+
+```go
+func appendCap(x []int, y int) []int {
+  var z []int
+  zlen := len(x) + 1
+  if zlen <= cap(x) {
+    z = x[:zlen]
+  } else {
+    zcap := zlen
+    if zcap < 2*len(x) {
+      zcap = 2*len(x)
+    }
+    z = make([]int, zlen, zcap)
+    copy(z,x)
+  }
+  z[len(x)] = y
+  return z
+}
+```
+
+A função `appendCap` recebe um slice e um inteiro e retorna um slice. A função `appendCap` verifica se o slice tem capacidade suficiente para adicionar um elemento. Se o slice tiver capacidade suficiente, o slice original é retornado com o novo elemento adicionado. Se o slice não tiver capacidade suficiente, um novo array é alocado e os elementos são copiados para o novo array antes de adicionar o novo elemento. O slice resultante pode ser diferente do slice original. Se o slice original tiver capacidade suficiente, o slice resultante apontará para o mesmo array subjacente que o slice original. Se o slice original não tiver capacidade suficiente, o slice resultante apontará para um novo array alocado.
+
+A função `copy` copia elementos de um slice para outro slice do mesmo tipo e retorna o número de elementos copiados, que é o menor entre o tamanho dos dois slices. O primeiro argumento é o slice de destino *(dst)* e o segundo é o slice de origem *(src)*.
+
+```go
+var x []int = []int{1, 2, 3, 4, 5}
+var y []int = []int{6, 7, 8, 9, 10}
+copy(x, y)
+fmt.Println(x) // [6 7 8 9 10]
+```
+
+Normalmente, não sabemos se uma dada chamada a append produzirá um slice que aponta para o mesmo array subjacente que o slice original ou para um novo array alocado. De modo semelhante, não devemos supor que atribuições a elementos de slice antiga se refletirão em um slice novo. É comum atribuir o resultado de uma chamada a append a um slice cujo valor passamos para append.
+
+```go
+var x []int = []int{1, 2, 3, 4, 5}
+x = append(x, 6)
+fmt.Println(x,) // [1 2 3 4 5 6]
+```
+
+Para usar slices corretamente é importante ter em mente que, embora os elementos do array subjacente sejam indiretos, o ponteiro da fatia, o tamanho e a capacidade não são. Portanto, se um slice for passado para uma função, as alterações feitas pela função no slice serão visíveis fora da função.
