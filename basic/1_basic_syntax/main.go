@@ -2,14 +2,22 @@ package main
 
 import "fmt"
 
-func main() {
+var (
+  e bool = true
+  f int = 10
+  g string
+  h float64
+)
 
+func main() {
+  
   // Este é um comentário de uma única linha
 
   /*
     Este é um comentário
     de várias linhas
   */
+
   var x int
   fmt.Println(x)
   
