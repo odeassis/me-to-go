@@ -1,4 +1,4 @@
-// Poblem url: https://leetcode.com/problems/two-sum/
+// Problems url: https://leetcode.com/problems/two-sum/
 
 package main
 
