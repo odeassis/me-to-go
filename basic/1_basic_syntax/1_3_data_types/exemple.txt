@@ -1,1 +1,0 @@
-Desde ontem a noite a disposição dos elementos HTML causou o bug dos argumentos que definem um schema dinâmico.
