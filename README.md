@@ -7,7 +7,7 @@ Algumas das minhas anotações e códigos de estudo da linguagem de programaçã
 ## 1. Learning the basics
 
 - 0 - [Hello World](./1_learn_the_basics/0_hello_word/main.go)
-- 1.1 - [Basic Syntax]()
+- 1.1 - [Basic Syntax](./_data/obsidian_files/1_learn_the_basics.md#11-basic-syntax)
 - 1.2 - [Variables and declarations]()
 - 1.3 - [Data types]()
   - 1.3.1 - [bool]()
